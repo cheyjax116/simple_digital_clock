@@ -1,2 +1,2 @@
 # simple_digital_clock
-Digital Clock Files - First Upload
+Displaying a simple digital clock using HTML, CSS and Javascript.
