@@ -1,60 +1,60 @@
+const weekdays = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
-var date = new Date();
-var wd = String(date.getDay());
-var yyyy = String(date.getFullYear());
-dd = String(date.getDate());
-var mm = String(date.getMonth());
+function displayTime() {
+  const date = new Date();
+  const hours = date.getHours().toString().padStart(2, 0);
+  const newHour = (hours % 12 || 12).toString().padStart(2, 0);
+  const minutes = date.getMinutes().toString().padStart(2, 0);
+  const seconds = date.getSeconds().toString().padStart(2, 0);
 
+  const amPM = hours < "12" || hours === "24" ? "AM" : "PM";
 
-var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-
-switch(dd){
-    case "1": 
-    case "21": 
-    case "31":
-        dd = dd + "st";
-        break;
-
-    case "2":
-    case "22":
-        dd = dd + "nd";
-        break;
-    
-    case "3":
-    case "23":
-        dd = dd + "rd"
-        break;
-
-    default:
-        dd = dd + "th"
-        break;
-        
-
+  const time = document.getElementById("clock");
+  time.textContent = `${newHour}:${minutes}:${seconds} ${amPM}`;
 }
 
-var fullDate = weekdays[wd] + ", " + months[mm] + " " + dd + ", " + yyyy;
+function displayDate() {
+  const dateObj = new Date();
+  const weekday = weekdays[dateObj.getDay()];
+  const year = dateObj.getFullYear();
+  const date = dateSuffix(dateObj.getDate());
+  const month = months[dateObj.getMonth()];
 
-function displayTime(){
-    date = new Date()
-    var hours = date.getHours().toString().padStart(2,0)
-    var newHour = (hours % 12 || 12).toString().padStart(2,0)
-    var minutes = date.getMinutes().toString().padStart(2,0);
-    var seconds = date.getSeconds().toString().padStart(2,0);
-    
-    if (hours < "12" || hours === 24 ){
-        var tod = "AM"
-    } else {
-        var tod = "PM"
-    }
+  // const fullDate = weekday + ", " + month + " " + date + ", " + year;
 
-    const time = newHour + ":" + minutes + ":" + seconds + " " + tod
-
-    document.getElementById("clock").innerHTML= time
+  const fullDate = document.getElementById("date");
+  fullDate.textContent = `${weekday}, ${month} ${date}, ${year}`;
 }
 
-setInterval(displayTime, 1000)
+function dateSuffix(date) {
+  if (date % 10 === 1) return `${date}st`;
+  if (date % 10 === 2) return `${date}nd`;
+  if (date % 10 === 3) return `${date}rd`;
+  return `${date}th`;
+}
 
-document.write(fullDate); 
-
+displayDate();
+displayTime();
+setInterval(displayTime, 1000);

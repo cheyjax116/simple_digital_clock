@@ -1,17 +1,15 @@
 body {
-    background-color: #686963;
-    color: #F1EDEE;
-    text-align: center;
-    font-family: 'Anton', sans-serif;
-    font-size: 3vw;
+  background-color: #686963;
+  color: #f1edee;
+  text-align: center;
+  font-family: "Anton", sans-serif;
+  font-size: 3vw;
 }
 
-h1{
-    font-size: 3vw;
-
+h1 {
+  font-size: 3vw;
 }
 
-h2{
-    font-size: 8vw;
-
+h2 {
+  font-size: 8vw;
 }
